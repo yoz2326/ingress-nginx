@@ -32,7 +32,7 @@ export JAEGER_VERSION=cdfaf5bb25ff5f8ec179fd548e6c7c2ade9a6a09
 export MSGPACK_VERSION=3.1.1
 export DATADOG_CPP_VERSION=0.4.2
 export LUA_BRIDGE_TRACER_VERSION=0.1.0
-export MODSECURITY_VERSION=fc061a57a8b0abda79b17cbe103d78db803fa575
+export MODSECURITY_VERSION=d7101e13685efd7e7c9f808871b202656a969f4b
 export LUA_NGX_VERSION=fd90f4e8252e9d06419317fdf525b55c65e15a50
 export LUA_STREAM_NGX_VERSION=0.0.6rc5
 export LUA_UPSTREAM_VERSION=0.07
@@ -157,7 +157,7 @@ get_src 015c4187f7a6426a2b5196f0ccd982aa87f010cf61f507ae3ce5c90523f92301 \
 get_src 30affaf0f3a84193f7127cc0135da91773ce45d902414082273dae78914f73df \
         "https://github.com/rnburn/zipkin-cpp-opentracing/archive/v$ZIPKIN_CPP_VERSION.tar.gz"
 
-get_src 073deba39f74eff81da917907465e1343c89b335244349d3d3b4ae9331de86f2 \
+get_src 5c8d25e68fb852f61489b669aebb7bd8ca8c88ebb5e5f969212fcceff3ee2d0b \
         "https://github.com/SpiderLabs/ModSecurity-nginx/archive/$MODSECURITY_VERSION.tar.gz"
 
 get_src 3183450d897baa9309347c8617edc0c97c5b29ffc32bd2d12f498edf2dcbeffa \
@@ -409,7 +409,7 @@ git submodule update
 cd "$BUILD_PATH"
 git clone -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity
 cd ModSecurity/
-git checkout 145f2f35b751cc10ea6fe2b329f68eac20e2bb74
+git checkout b5823d4e0c53375d56f7e5089d6c6bec948ac339
 git submodule init
 git submodule update
 sh build.sh
@@ -423,9 +423,9 @@ cp unicode.mapping /etc/nginx/modsecurity/unicode.mapping
 
 # Download owasp modsecurity crs
 cd /etc/nginx/
-git clone -b v3.0/master --single-branch https://github.com/SpiderLabs/owasp-modsecurity-crs
+git clone -b v3.2/dev --single-branch https://github.com/SpiderLabs/owasp-modsecurity-crs
 cd owasp-modsecurity-crs
-git checkout a216353c97dd6ef767a6db4dbf9b724627811c9b
+git checkout 6bda9b456acc5aa77a89d44569a0e762a505fc16
 
 mv crs-setup.conf.example crs-setup.conf
 mv rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf.example rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
